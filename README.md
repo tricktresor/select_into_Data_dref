@@ -20,7 +20,17 @@ METHOD selection.
 ENDMETHOD.
 ```
 
-## BACKGROUND
+# New solution
+
+In new SAP-Releases you can bypass the ASSIGN_LOCAL_TABLE_TO_RESULT-Method by simply using INTO TABLE NEW @result:
+
+```
+  SELECT vbeln, posnr, bzirk FROM vbkd
+      WHERE vbeln = @i_vbeln
+      INTO TABLE NEW @result.
+```
+
+# BACKGROUND
 
 SELECT INTO DATA is easy and comfortable, but if I want to modularize I need to define a structure type and a table type for every select. If I add a field to the select, I will have to adapt the structure type.
 
